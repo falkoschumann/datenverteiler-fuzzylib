@@ -1,4 +1,7 @@
 apply plugin: 'java-library'
+apply plugin: 'distribution'
+
+version = '0.1.0'
 
 repositories {
     jcenter()
@@ -13,4 +16,14 @@ dependencies {
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
+}
+
+distributions {
+    main {
+        contents {
+            from jar
+            from('README.md')
+            from('LICENSE.txt')
+        }
+    }
 }
