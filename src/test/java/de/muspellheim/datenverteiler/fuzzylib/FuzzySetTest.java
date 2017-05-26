@@ -13,57 +13,125 @@ public class FuzzySetTest {
 
     @Test
     public void testSingleton() {
-        FuzzySet x = FuzzySet.erzeugeSingleton("Singleton", 3);
+        FuzzySet fuzzySet = FuzzySet.singleton("Singleton", 20.0);
 
-        assertTrue(x.isSingleton());
-        assertFalse(x.isDreieck());
-        assertFalse(x.isTrapez());
-        assertFalse(x.isAufsteigendeRampe());
-        assertFalse(x.isAbfallendeRampe());
+        assertEquals("Singleton", fuzzySet.getName());
+        assertEquals(20.0, fuzzySet.getT1(), 0.001);
+        assertEquals(20.0, fuzzySet.getT2(), 0.001);
+        assertEquals(20.0, fuzzySet.getT3(), 0.001);
+        assertEquals(20.0, fuzzySet.getT4(), 0.001);
+
+        assertTrue(fuzzySet.isSingleton());
+        assertFalse(fuzzySet.isDreieck());
+        assertFalse(fuzzySet.isTrapez());
+        assertFalse(fuzzySet.isAufsteigendeRampe());
+        assertFalse(fuzzySet.isAbfallendeRampe());
+
+        assertEquals(0.0, fuzzySet.zugehoerigkeit(19.0), 0.001);
+        assertEquals(1.0, fuzzySet.zugehoerigkeit(20.0), 0.001);
+        assertEquals(0.0, fuzzySet.zugehoerigkeit(11.0), 0.001);
     }
 
     @Test
     public void testDreieck() {
-        FuzzySet x = FuzzySet.erzeugeDreieck("Dreieck", 3, 5, 7);
+        FuzzySet fuzzySet = FuzzySet.dreieck("Dreieck", 20, 30, 40);
 
-        assertTrue(x.isDreieck());
-        assertFalse(x.isSingleton());
-        assertFalse(x.isTrapez());
-        assertFalse(x.isAufsteigendeRampe());
-        assertFalse(x.isAbfallendeRampe());
+        assertEquals("Dreieck", fuzzySet.getName());
+        assertEquals(20.0, fuzzySet.getT1(), 0.001);
+        assertEquals(30.0, fuzzySet.getT2(), 0.001);
+        assertEquals(30.0, fuzzySet.getT3(), 0.001);
+        assertEquals(40.0, fuzzySet.getT4(), 0.001);
+
+        assertTrue(fuzzySet.isDreieck());
+        assertFalse(fuzzySet.isSingleton());
+        assertFalse(fuzzySet.isTrapez());
+        assertFalse(fuzzySet.isAufsteigendeRampe());
+        assertFalse(fuzzySet.isAbfallendeRampe());
+
+        assertEquals(0.0, fuzzySet.zugehoerigkeit(19.0), 0.001);
+        assertEquals(0.0, fuzzySet.zugehoerigkeit(20.0), 0.001);
+        assertEquals(0.2, fuzzySet.zugehoerigkeit(22.0), 0.001);
+        assertEquals(1.0, fuzzySet.zugehoerigkeit(30.0), 0.001);
+        assertEquals(0.5, fuzzySet.zugehoerigkeit(35.0), 0.001);
+        assertEquals(0.0, fuzzySet.zugehoerigkeit(40.0), 0.001);
+        assertEquals(0.0, fuzzySet.zugehoerigkeit(41.0), 0.001);
     }
 
     @Test
     public void testTrapez() {
-        FuzzySet x = FuzzySet.erzeugeTrapez("Trapez", 3, 5, 7, 9);
+        FuzzySet fuzzySet = FuzzySet.trapez("Trapez", 20, 30, 40, 50);
 
-        assertTrue(x.isTrapez());
-        assertFalse(x.isSingleton());
-        assertFalse(x.isDreieck());
-        assertFalse(x.isAufsteigendeRampe());
-        assertFalse(x.isAbfallendeRampe());
+        assertEquals("Trapez", fuzzySet.getName());
+        assertEquals(20.0, fuzzySet.getT1(), 0.001);
+        assertEquals(30.0, fuzzySet.getT2(), 0.001);
+        assertEquals(40.0, fuzzySet.getT3(), 0.001);
+        assertEquals(50.0, fuzzySet.getT4(), 0.001);
+
+        assertTrue(fuzzySet.isTrapez());
+        assertFalse(fuzzySet.isSingleton());
+        assertFalse(fuzzySet.isDreieck());
+        assertFalse(fuzzySet.isAufsteigendeRampe());
+        assertFalse(fuzzySet.isAbfallendeRampe());
+
+        assertEquals(0.0, fuzzySet.zugehoerigkeit(19.0), 0.001);
+        assertEquals(0.0, fuzzySet.zugehoerigkeit(20.0), 0.001);
+        assertEquals(0.2, fuzzySet.zugehoerigkeit(22.0), 0.001);
+        assertEquals(1.0, fuzzySet.zugehoerigkeit(30.0), 0.001);
+        assertEquals(1.0, fuzzySet.zugehoerigkeit(37.0), 0.001);
+        assertEquals(1.0, fuzzySet.zugehoerigkeit(40.0), 0.001);
+        assertEquals(0.5, fuzzySet.zugehoerigkeit(45.0), 0.001);
+        assertEquals(0.0, fuzzySet.zugehoerigkeit(50.0), 0.001);
+        assertEquals(0.0, fuzzySet.zugehoerigkeit(51.0), 0.001);
     }
 
     @Test
-    public void testAufsteigendeRampe() {
-        FuzzySet x = FuzzySet.erzeugeAufsteigendeRampe("Aufsteigende Rampe", 3, 5, 7);
+    public void testSteigendeRampe() {
+        FuzzySet fuzzySet = FuzzySet.steigendeRampe("Steigende Rampe", 20, 30, 40);
 
-        assertTrue(x.isAufsteigendeRampe());
-        assertFalse(x.isDreieck());
-        assertFalse(x.isSingleton());
-        assertFalse(x.isTrapez());
-        assertFalse(x.isAbfallendeRampe());
+        assertEquals("Steigende Rampe", fuzzySet.getName());
+        assertEquals(20.0, fuzzySet.getT1(), 0.001);
+        assertEquals(30.0, fuzzySet.getT2(), 0.001);
+        assertEquals(40.0, fuzzySet.getT3(), 0.001);
+        assertEquals(40.0, fuzzySet.getT4(), 0.001);
+
+        assertTrue(fuzzySet.isAufsteigendeRampe());
+        assertFalse(fuzzySet.isDreieck());
+        assertFalse(fuzzySet.isSingleton());
+        assertFalse(fuzzySet.isTrapez());
+        assertFalse(fuzzySet.isAbfallendeRampe());
+
+        assertEquals(0.0, fuzzySet.zugehoerigkeit(19.0), 0.001);
+        assertEquals(0.0, fuzzySet.zugehoerigkeit(20.0), 0.001);
+        assertEquals(0.2, fuzzySet.zugehoerigkeit(22.0), 0.001);
+        assertEquals(1.0, fuzzySet.zugehoerigkeit(30.0), 0.001);
+        assertEquals(1.0, fuzzySet.zugehoerigkeit(35.0), 0.001);
+        assertEquals(1.0, fuzzySet.zugehoerigkeit(40.0), 0.001);
+        assertEquals(0.0, fuzzySet.zugehoerigkeit(41.0), 0.001);
     }
 
     @Test
-    public void testAbfallendeRampe() {
-        FuzzySet x = FuzzySet.erzeugeAbfallendeRampe("Abfallende Rampe", 3, 5, 7);
+    public void testFallendeRampe() {
+        FuzzySet fuzzySet = FuzzySet.fallendeRampe("Fallende Rampe", 20, 30, 40);
 
-        assertTrue(x.isAbfallendeRampe());
-        assertFalse(x.isDreieck());
-        assertFalse(x.isSingleton());
-        assertFalse(x.isTrapez());
-        assertFalse(x.isAufsteigendeRampe());
+        assertEquals("Fallende Rampe", fuzzySet.getName());
+        assertEquals(20.0, fuzzySet.getT1(), 0.001);
+        assertEquals(20.0, fuzzySet.getT2(), 0.001);
+        assertEquals(30.0, fuzzySet.getT3(), 0.001);
+        assertEquals(40.0, fuzzySet.getT4(), 0.001);
+
+        assertTrue(fuzzySet.isAbfallendeRampe());
+        assertFalse(fuzzySet.isDreieck());
+        assertFalse(fuzzySet.isSingleton());
+        assertFalse(fuzzySet.isTrapez());
+        assertFalse(fuzzySet.isAufsteigendeRampe());
+
+        assertEquals(0.0, fuzzySet.zugehoerigkeit(19.0), 0.001);
+        assertEquals(1.0, fuzzySet.zugehoerigkeit(20.0), 0.001);
+        assertEquals(1.0, fuzzySet.zugehoerigkeit(22.0), 0.001);
+        assertEquals(1.0, fuzzySet.zugehoerigkeit(30.0), 0.001);
+        assertEquals(0.5, fuzzySet.zugehoerigkeit(35.0), 0.001);
+        assertEquals(0.0, fuzzySet.zugehoerigkeit(40.0), 0.001);
+        assertEquals(0.0, fuzzySet.zugehoerigkeit(41.0), 0.001);
     }
 
 }
