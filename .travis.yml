@@ -5,7 +5,7 @@ deploy:
   provider: releases
   api_key:
     secure: ZM+fpHCO3YF3tUKgVwlt0X0TChGSmUIBSwsiKwxH9GI0aWNiJ1dNIgeSEtQE71DNSdrhACrbcGxFEC2UhQu+kzqz39L0uS/I1GBvGKVFB61qvHSqjWyughctCY4LmCLRRXE0bkK5TKgNe2EeCvXma8aq4PooeCwRoTRLy13Knj4LU472bcmmV+LzRqU7ghpHQY3oTI7DMT4593KlqZ1nVWZQz0vxUxjvjcwGklMD2SAun/WQNBY2h+bsv9osKO1A0F2qhkH7609e44MRGTe59fAqv+4lVEbcrotXQyIexHdgqzXgkTqc6yxLGmBlfJBRhfFWFjqYm8nXu49tkxvJK9dKUVQD+vfwsYRFXbaZJN193tnZYhXVFg/11H6/5xb3HO2ovM/ok2OGOuyIQUdSlZ3rvtl8xC18Av5D1hRHf4nvdeBTLrTRo8OomedqmUY5GeGs/I+11GqhynOCPnCH710fzsHlrC/4ySNXG2fb3ei6G4kBJWQueJ3gu/ya3GWI/vAeGgtqu+SLpTsKd0Zd5tCtV5j4HvLq3ZHZkGTE/JK4NLEwWh6H9wNhMYEPwwjQZ98aAIwv9r6SdX3M7H1Y97zGJfozybnomRwfSAlWV82iww1uNYe2trXPzziZUGwTgt4rW9DRW5L8nGq4LpSq2SmSDlreDqyaEzcUyYpZBUQ=
-  file: "FILE TO UPLOAD"
+  file: "build/distributions/datenverteiler-fuzzylib-0.1.0.zip"
   skip_cleanup: true
   on:
     tags: true
